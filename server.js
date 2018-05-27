@@ -4,6 +4,10 @@ const axios = require('axios')
 var express = require('express');
 var app = express();
 
+if (!process.env.PROJECT_DOMAIN) {
+  // read environment variables (only necessary locally, not on Glitch)
+  require('dotenv').config();
+}
 
 async function gifRequest(endpoint, params) {
   let result = await axios.get(
@@ -54,6 +58,6 @@ app.get('/search', async (req, res, next) => {
 })
 
 // listen for requests :)
-var listener = app.listen(process.env.PORT, function () {
+var listener = app.listen(process.env.PORT || 8000, function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });

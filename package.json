@@ -24,5 +24,8 @@
     "node",
     "glitch",
     "express"
-  ]
+  ],
+  "devDependencies": {
+    "dotenv": "^5.0.1"
+  }
 }
